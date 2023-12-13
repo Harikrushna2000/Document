@@ -1,0 +1,54 @@
+ onChangeReport(result: any) {
+    if (result.length !== 0) {
+      const startDate = result[0];
+
+      let modifiedStartDate = new Date(startDate.getTime()); // Create a copy of the original date
+
+      // Change the time to 12:00:00
+      modifiedStartDate.setHours(0);
+      modifiedStartDate.setMinutes(0);
+      modifiedStartDate.setSeconds(1);
+
+      // convert local to utc
+      let startUpdatedDate = modifiedStartDate.toISOString();
+
+      const endDate = result[1];
+
+      let modifiedEndDate = new Date(endDate.getTime()); // Create a copy of the original date
+
+      // Change the time to 23:59:59
+      modifiedEndDate.setHours(23);
+      modifiedEndDate.setMinutes(59);
+      modifiedEndDate.setSeconds(59);
+
+      // convert local to utc
+      let endUpdateDate = modifiedEndDate.toISOString();
+
+      return [startUpdatedDate, endUpdateDate];
+    } else {
+      return [];
+    }
+  }
+
+
+
+*************Date tiem formate**************
+
+  formatDate(event: any) {
+    return new Date(event)
+      .toLocaleString('en-us', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      })
+      .replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2');
+  }
+
+
+getTimeAsNumberOfMinutes = (time: any) => {
+    var timeParts = time.split(':');
+
+    var timeInMinutes = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+
+    return timeInMinutes;
+  };

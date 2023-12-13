@@ -1,0 +1,18 @@
+********* Validation List**********
+
+1. Pattern : 
+	Number : Validators.pattern('^[0-9_.]+$').
+	A To Z Char : Validators.pattern('^[A-Za-z]+$').
+	Decimal numbwe : Validators.pattern('^[0-9]+(.[0-9]{1,2})?$').
+	Strong Password : Validators.pattern(
+		'(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])
+		(?=.*[`~!@#$%^&\\\\*\\\\(\\\\):;"\\<>,\\\\.?\\\\/`]).{8,30}'
+          	)
+
+2. Width :
+	Maximum Number : Validators.max(no).
+	Maximum Char: Validators.maxLength(no).
+	Minimum Number : Validators.min(no).
+	Minimum Char: Validators.minLength(no).
+
+3. Required : Validators.required
